@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
+/* Faz o dark mode responder à classe .dark no html (em vez de prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --theme-transition: 300ms ease-in-out;
+  --shimmer-from: #e5e7eb;
+  --shimmer-via: #f3f4f6;
+  --shimmer-to: #e5e7eb;
+}
+
+.dark {
+  --background: #555050;
+  --foreground: #ededed;
+  --shimmer-from: #161f31;
+  --shimmer-via: #333357;
+  --shimmer-to: #161f31;
 }
 
 @theme inline {
@@ -11,16 +26,60 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes shimmer {
+  0%{
+    background-position: -1000px 0;
   }
+  100%{
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--shimmer-from) 0%,
+    var(--shimmer-via) 20%,
+    var(--shimmer-to) 40%,
+    var(--shimmer-to) 60%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut{
+  from{
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards
+}
+.fadeOut {
+  animation: fadeOut 0.3s ease-in-out forwards
+}
+
+html {
+  transition: background-color var(--theme-transition), color var(--theme-transition);
+  
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color var(--theme-transition), color var(--theme-transition);
 }

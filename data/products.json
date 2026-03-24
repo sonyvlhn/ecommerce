@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Tênis Air Max",
+    "description": "Tênis esportivo com amortecimento avançado.",
+    "descriptionComplete": "O Tênis Air Max é a escolha perfeita para quem busca conforto e estilo. Com tecnologia de amortecimento avançada, ele proporciona uma experiência de corrida suave e responsiva. Seu design moderno e versátil o torna ideal para diversas ocasiões, seja para atividades esportivas ou para compor um look casual. Disponível em várias cores, o Air Max é a combinação perfeita entre desempenho e moda.",
+    "category": "Calçados",
+    "price": 599.90,
+    "image": "https://imgnike-a.akamaihd.net/768x768/02951654A1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Mochila Urban",
+    "description": "Mochila resistente para o dia a dia.",
+    "descriptionComplete": "A Mochila Urban é a escolha perfeita para quem busca praticidade e estilo. Com materiais de alta qualidade e design moderno, ela oferece conforto e capacidade de armazenamento para suas necessidades diárias. Disponível em várias cores, a Urban é a combinação perfeita entre funcionalidade e moda.",
+    "category": "Acessórios", 
+    "price": 189.90,
+    "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRmonhISNVq0pQeQNYIAo6Qw1mORHNhYSsRNRwv6KdwwgA1wQ4TNq1ulRwQ1E2_euBJDBhn5UTpiNLe0KFSE2T47VMouycZqm_itqAdrCXQd66qnnfM0j2csw"
+  },
+  {
+    "id": 3,
+    "name": "Óculos Solar",
+    "description": "Proteção UV400 com estilo moderno.",
+    "descriptionComplete": "Os Óculos Solar oferecem proteção UV400 com um design moderno e elegante. Eles são ideais para uso diário, proporcionando conforto e estilo em qualquer ocasião.",
+    "category": "Acessórios",
+    "price": 249.90,
+    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT7wduKX7elswkkpJ-fyRCwgu_NUaSTFDMHneDqhajzfYsQhUfqzfywc_7V2ORH0f4b21GpumXIEzDa8rRp6g0c3LLzgbfYBQ"
+  },
+    {
+        "id": 4,
+        "name": "Relógio Smart",
+        "description": "Relógio inteligente com monitoramento de saúde.",
+        "descriptionComplete": "O Relógio Smart é o companheiro ideal para quem busca monitoramento de saúde e estilo. Com tecnologia avançada, ele oferece uma experiência completa de bem-estar.",
+        "category": "Tecnologia",
+        "price": 899.90,
+        "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTaaRS10mwXg1gfF5B9_CZdsXIhWR6aZna6RNFcVX6mBGbbAoCgbmCOx1neyMknHwQg2hB7PJuF6x8sRre1mqhHybFnkHvQUKEKCHjb5JHBCCp9g-wa5Xe-Dr0NbNw1wqVuiRzZ5Q&usqp=CAc"
+    }
+]
