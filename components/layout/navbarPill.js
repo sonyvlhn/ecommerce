@@ -36,7 +36,7 @@ export default function NavbarPill() {
     className='fixed top-0 left-0 right-0 z-50 flex items-center gap-4 bg-white dark:bg-gray-900 text-black dark:text-gray-100 p-2 transition-colors duration-300 ease-in-out shadow-sm dark:shadow-gray-800/50'>
         <h2 className="font-bold text-2xl leading-none">Logo</h2>
         <nav
-        className='h-14 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit px-1.5 m-auto flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10'>
+        className='h-14 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit px-1.5 m-auto flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors durantion-300'>
             <div
             className='relative flex gap-1 p-1.5'>
                 <div
