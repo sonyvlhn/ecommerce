@@ -71,7 +71,7 @@ export default function Quickview( {product, onClose, isOpen} ) {
             </div>
             <button
             onClick={handleClose}
-            className="w-full rounded-full bg-gray-300 dark:bg-gray-600 mb-6 py-1.5 text-gray-700 dark:text-gray-100 max-w-xs mx-auto hover:scale-105 hover:bg-gray-400 dark:hover:bg-gray-500 hover:text-white duration-300 ease-in-out transition-colors">
+            className="cursor-pointer w-full rounded-full bg-gray-300 dark:bg-gray-600 mb-6 py-1.5 text-gray-700 dark:text-gray-100 max-w-xs mx-auto hover:scale-105 hover:bg-gray-400 dark:hover:bg-gray-500 hover:text-white duration-300 ease-in-out transition-colors">
               Fechar
             </button>
           </div>
