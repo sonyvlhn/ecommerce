@@ -45,7 +45,7 @@ export default function Quickview( {product, onClose, isOpen} ) {
         <div className="flex justify-center items-center h-screen w-screen">
         <div
         ref={quickviewRef}
-        className="grid min-h-0 grid-cols-[minmax(0,45%)_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] max-h-[90vh] overflow-hidden bg-white dark:bg-gray-900 w-2/4 rounded-2xl shadow-2xl dark:shadow-black/50 border border-transparent dark:border-gray-800 transition-colors duration-300">
+        className="grid min-h-0 grid-cols-[minmax(0,45%)_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] max-h-[90vh] overflow-hidden bg-white dark:bg-gray-900 w-2/4 rounded-2xl shadow-2xl dark:shadow-black/50 border border-transparent dark:border-gray-800 transition-colors duration-300 ease-in-out">
           <div className="relative min-h-0 min-w-0">
             <Image
               src={product.image}

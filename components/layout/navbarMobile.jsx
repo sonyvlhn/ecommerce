@@ -87,7 +87,7 @@ export default function NavbarMobile() {
 
   return (
     <div className="fixed bottom-0 right-0 left-0 z-50 flex items-center justify-center py-2 backdrop-blur-sm">
-      <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300">
+      <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
         <div className="relative flex gap-1 p-1.5">
           <div
             className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out"
@@ -101,7 +101,7 @@ export default function NavbarMobile() {
                 setActive(index);
                 router.push(link.href);
               }}
-              className={`relative z-10 flex flex-col items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
+              className={`relative z-10 flex flex-col items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
             >
               {link.icon}
               {link.name}

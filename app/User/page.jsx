@@ -14,21 +14,21 @@ export default function User() {
 
   function handleClose() {
     setClosing(true);
-    setTimeout(() => router.back(), 350);
+    setTimeout(() => router.back(), 300);
   }
 
   return (
     <div className="flex flex-col h-screen w-screen absolute">
       <div
-        className={`flex flex-col h-full w-full bg-white transition-transform duration-350 ease-in-out ${
+        className={`flex flex-col h-full w-full bg-white transition-transform duration-300 ease-in-out ${
           visible && !closing ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="w-full h-18 bg-white dark:bg-gray-800 flex items-center justify-between p-4 shadow-md z-50 transition-all duration-300">
-          <p className="text-2xl font-bold dark:text-white transition-colors duration-300">Preferências</p>
+        <div className="w-full h-18 bg-white dark:bg-gray-800 flex items-center justify-between p-4 shadow-md z-50 transition-all duration-300 ease-in-out">
+          <p className="text-2xl font-bold dark:text-white transition-colors duration-300 ease-in-out">Preferências</p>
           <button
             onClick={handleClose}
-            className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-300"
+            className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-300 ease-in-out"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export default function User() {
             </svg>
           </button>
         </div>
-        <div className="py-2 bg-gray-100 dark:bg-gray-800 h-screen transition-colors duration-300">
+        <div className="py-2 bg-gray-100 dark:bg-gray-800 h-screen transition-colors duration-300 ease-in-out">
           <a
             href="#"
             className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-md"

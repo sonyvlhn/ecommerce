@@ -39,8 +39,8 @@ export default function NavbarPill() {
   return (
     /* FrontEnd da Navbar */
     <div className="fixed top-0 left-0 right-0 z-50 flex items-center gap-4 backdrop-blur-sm dark:backdrop-blur-sm text-black dark:text-gray-100 p-2 transition-colors duration-300 ease-in-out shadow-sm dark:shadow-gray-800/50">
-      <h2 className="font-bold text-2xl leading-none">Logo</h2>
-      <nav className="h-14 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit px-1.5 m-auto flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors durantion-300">
+      <h2 className="font-bold text-2xl leading-none ml-2">Logo</h2>
+      <nav className="h-14 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit px-1.5 m-auto flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
         <div className="relative flex gap-1 p-1.5">
           <div
             className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out"
@@ -54,7 +54,7 @@ export default function NavbarPill() {
                 setActive(index); //ativa o link clicado
                 router.push(link.href); //redireciona para a página correspondente ao link clicado
               }}
-              className={`relative z-10 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
+              className={`relative z-10 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
             >
               {link.name}
             </button>

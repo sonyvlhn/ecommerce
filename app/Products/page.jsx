@@ -36,14 +36,14 @@ import useWindowSize from "./useWindowSize";
   }, []);
 
   return (
-    <div className="bg-zinc-50 dark:bg-gray-900 transition-colors duration-300 pb-5">
-      <div className={isMobile ? `${"pt-6 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 transition-colors duration-300"}`:`${"pt-22 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 transition-colors duration-300"}`}>
-        {isMobile && <h2 className="text-xl font-semibold p-3 text-center">Confira nossos produtos</h2>}
+    <div className="bg-zinc-50 dark:bg-gray-900 transition-colors duration-300 ease-in-out pb-5">
+      <div className={isMobile ? `${"pt-6 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 transition-colors duration-300 ease-in-out"}`:`${"pt-22 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 transition-colors duration-300 ease-in-out"}`}>
+        {isMobile && <h2 className="text-xl text-black dark:text-white font-semibold p-3 text-center">Confira nossos produtos</h2>}
         <Filter />
 
         <div className="w-full max-w-[1100px]">
           <section className="w-full bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-900 transition-colors duration-300 ease-in-out">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center p-4 sm:p-10 lg:p-16 gap-6 sm:gap-8 dark:bg-gray-800 rounded-2xl transition-colors duration-300 ease-in-out w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center p-4 sm:p-10 lg:p-10 gap-6 sm:gap-8 dark:bg-gray-800 rounded-2xl transition-colors duration-300 ease-in-out w-full">
               {loading
                 ? Array(6)
                     .fill(0)

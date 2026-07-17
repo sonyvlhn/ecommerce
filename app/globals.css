@@ -20,10 +20,7 @@
   --shimmer-to: #161f31;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+
 @keyframes shimmer {
   0%{
     background-position: -1000px 0;
@@ -69,14 +66,4 @@
 .fadeOut {
   animation: fadeOut 0.3s ease-in-out forwards
 }
-
-html {
-  transition: background-color var(--theme-transition), color var(--theme-transition);
-  
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  transition: background-color var(--theme-transition), color var(--theme-transition);
-}
+ 
