@@ -4,14 +4,14 @@ import Image from "next/image";
 
 export default function Card({ product, onQuickView }) {
   return (
-    <div className="w-full max-w-[300px] pb-6 border-6 border-white dark:border-gray-900 bg-white dark:bg-gray-900 dark:ring-1 dark:ring-gray-700/70 rounded-xl my-2 shadow-lg dark:shadow-black/30 hover:scale-105 transition-transform duration-300 ease-in-out grid group">
+    <div className="w-full max-w-75 pb-6 border-6 border-white dark:border-gray-900 bg-white dark:bg-gray-900 dark:ring-1 dark:ring-gray-700/70 rounded-xl my-2 shadow-lg dark:shadow-black/30 hover:scale-105 transition-transform duration-300 ease-in-out grid group">
       <Image
         src={product.image}
         alt={product.name}
         width={270}
         height={180}
         unoptimized
-        className="w-full h-52 object-cover object-bottom overflow-hidden rounded-t-[6px]"
+        className="w-full h-52 object-cover object-bottom overflow-hidden rounded-t-md"
       />
       <div className="relative z-10 -mt-15 px-6 space-y-3 flex flex-col flex-1 bg-linear-to-t from-white dark:from-gray-900 from-80% to-transparent pt-4">
         <h2 className="font-extrabold text-black dark:text-white text-xl mt-10 ">
@@ -20,7 +20,7 @@ export default function Card({ product, onQuickView }) {
         <p className="font-extralight text-gray-500 dark:text-gray-400 text-sm line-clamp-2">
           {product.description}
         </p>
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60 ">
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60">
           <h3 className="font-bold text-black dark:text-white text-2xl">
             R$ {product.price.toFixed(2)}
           </h3>
