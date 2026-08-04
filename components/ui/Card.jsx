@@ -4,44 +4,47 @@ import Image from "next/image";
 
 export default function Card({ product, onQuickView }) {
   return (
-    <div className="relative w-full max-w-75 pb-6 border-6 border-white dark:border-gray-900 bg-white dark:bg-gray-900 dark:ring-1 dark:ring-gray-700/70 rounded-xl my-2 shadow-lg dark:shadow-black/30 hover:scale-105 transition-transform duration-300 ease-in-out grid group">
+    <div className="relative w-full max-w-80 pb-6 border-3 border-white/20 dark:border-gray-800/20 bg-[#f8f8f8] dark:bg-gray-900/60 dark:backdrop-blur-md rounded-4xl my-2 shadow-lg dark:shadow-black/50 transition-transform duration-300 ease-in-out hover:scale-101 grid group">
       <Image
         src={product.image}
         alt={product.name}
         width={270}
         height={180}
         unoptimized
-        className="w-full h-52 object-cover object-bottom overflow-hidden rounded-t-md"
+        className="w-full h-52 object-cover object-bottom overflow-hidden rounded-t-4xl mask-b-from-70% mask-b-to-100%"
       />
-      <button className="absolute right-0 top-0 rounded-bl-2xl bg-linear-to-bl from-white dark:from-gray-900 from-50% dark:from-45% to-transparent p-3 cursor-pointer shadow-sm shadow-gray-200/10 dark:shadow-black/10">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-slate-700 hover:text-rose-500 dark:text-white dark:hover:text-rose-400 transition-all duration-300 ease-in-out hover:scale-110">
-          <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+      <button className="absolute right-2 top-2 rounded-full bg-white dark:bg-gray-800 p-2 cursor-pointer shadow-sm shadow-gray-200/10 dark:shadow-black/30 ring-1 ring-transparent dark:ring-white/10 transition-[background-color,box-shadow,--tw-ring-color] duration-300 ease-in-out">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 text-slate-700 hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400 transition-all duration-300 ease-in-out hover:scale-110 hover:fill-rose-500">
+          <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
         </svg>
       </button>
-      <div className="relative z-10 -mt-15 px-6 space-y-3 flex flex-col flex-1 bg-linear-to-t from-white dark:from-gray-900 from-80% to-transparent pt-4">
-        <h2 className="font-extrabold text-black dark:text-white text-xl mt-10 ">
+      <div className="relative z-10 -mt-20 px-6 space-y-1 flex flex-col flex-1 pt-4">
+        <div className="pointer-events-none absolute inset-0 -z-10 backdrop-blur-xs mask-[linear-gradient(to_top,gray_80%,transparent)]" />
+        <h2 className="font-semibold text-black dark:text-white text-xl mt-10 transition-colors duration-300 ease-in-out">
           {product.name}
         </h2>
-        <p className="font-extralight text-gray-500 dark:text-gray-400 text-sm line-clamp-2">
+        <p className="font-extralight text-gray-500 dark:text-gray-400 text-sm line-clamp-2 transition-colors duration-300 ease-in-out">
           {product.description}
         </p>
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60">
-          <h3 className="font-bold text-black dark:text-white text-2xl">
+        <div className="flex w-full justify-between mt-3">
+          <div className="bg-linear-to-tr from-0% to-100% from-slate-900 to-slate-600 text-white dark:from-slate-100 dark:to-slate-200 dark:text-slate-900 dark:inset-shadow-xs rounded-full px-3 py-2 text-xs transition-colors duration-300 ease-in-out">-20%</div>
+          <h3 className="text-black dark:text-white text-xl transition-colors duration-300 ease-in-out">
             R$ {product.price.toFixed(2)}
           </h3>
-          <div className="flex items-center gap-2">
-            <button className="flex items-center justify-center p-2.5 rounded-lg bg-linear-to-br from-slate-900 to-slate-600 hover:from-slate-800 hover:to-slate-500 dark:from-white dark:to-zinc-100 dark:hover:from-zinc-100 dark:hover:to-zinc-200 text-white dark:text-black theme-transition transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer shadow-sm shadow-sky-500/10 dark:shadow-white/5">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+        </div>
+        <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60 transition-colors duration-300 ease-in-out">
+          <div className="flex items-center justify-between gap-2">
+            <button className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/80 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 backdrop-blur-md text-gray-900 dark:text-white text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer border border-white/80 dark:border-white/20 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.95),0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[inset_0_1.5px_3px_rgba(255,255,255,1),0_4px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.15),0_2px_8px_rgba(0,0,0,0.3)] dark:hover:shadow-[inset_0_1.5px_3px_rgba(255,255,255,0.25),0_4px_12px_rgba(0,0,0,0.4)]">
+              <span>Tamanho</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-4 text-gray-600 dark:text-gray-300">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
               </svg>
             </button>
-            <button
-              onClick={onQuickView}
-              className="flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 theme-transition transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer shadow-sm"
-              title="Mais detalhes"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+
+            <button className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-white/80 hover:bg-[#f7f7f7] dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-white text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer border border-white dark:border-gray-700 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.95),0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[inset_0_1.5px_3px_rgba(255,255,255,1),0_4px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.15),0_2px_8px_rgba(0,0,0,0.3)] dark:hover:shadow-[inset_0_1.5px_3px_rgba(255,255,255,0.25),0_4px_12px_rgba(0,0,0,0.4)]">
+              <span>Adicionar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
               </svg>
             </button>
           </div>
