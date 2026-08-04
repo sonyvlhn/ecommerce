@@ -1,22 +1,38 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ButtonDark from "@/components/ui/buttonDark.jsx";
 
 export default function Dropdown({ isOpen, onClose }) {
   const dropdownRef = useRef(null);
 
-  const handleBackdropClick = (e) => {
-    e.stopPropagation();
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      onClose();
-    }
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
   return (
     <div>
-      <div
-        onClick={handleBackdropClick}
-        className={`fixed inset-0 z-40 ${isOpen ? "block" : "hidden"}`}
-      >
+      <div>
         <div>
           <div
             ref={dropdownRef}
