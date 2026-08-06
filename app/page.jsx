@@ -1,10 +1,11 @@
-import Image from "next/image";
-import products from "@/data/products.json";
-import Card from "../components/ui/Card";
+import Hero from "@/components/sections/Hero";
+import FeaturedProducts from "@/components/sections/FeaturedProducts";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-gray-900 transition-colors duration-300 ease-in-out">
-      Página Inicial
+    <div className="max-w-355 mx-auto">
+      <Hero />
+      <FeaturedProducts />
     </div>
   );
 }

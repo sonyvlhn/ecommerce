@@ -41,9 +41,9 @@ import useWindowSize from "./useWindowSize";
         {isMobile && <h2 className="text-xl text-black dark:text-white font-semibold p-3 text-center">Confira nossos produtos</h2>}
         <Filter />
 
-        <div className="w-full max-w-275">
-          <section className="w-full bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-900 transition-colors duration-300 ease-in-out">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center p-4 sm:p-10 lg:p-10 gap-6 sm:gap-8 dark:bg-gray-800 rounded-2xl transition-colors duration-300 ease-in-out w-full">
+        <div className="w-full max-w-300">
+          <section className="w-full mb-16 md:mb-0 pb-4 bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-900 transition-colors duration-300 ease-in-out">
+            <div className="grid flex-nowrap overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth overscroll-x-contain sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible justify-items-center p-4 sm:p-10 lg:p-10 gap-6 sm:gap-8 dark:bg-gray-800 rounded-2xl transition-colors duration-300 ease-in-out w-full">
               {loading
                 ? Array(6)
                     .fill(0)

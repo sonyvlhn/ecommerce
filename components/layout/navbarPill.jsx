@@ -7,9 +7,9 @@ import Dropdown from "./dropdown";
 export default function NavbarPill() {
   /* BackEnd da NavBar */
   const links = [
-    { name: "Home", href: "/" },
+    { name: "início", href: "/" },
     { name: "Produtos", href: "/Products" },
-    { name: "Contact", href: "/" },
+    { name: "Sobre", href: "/about" },
   ];
   const [active, setActive] = useState(0);
   const refs = useRef([]);
@@ -54,7 +54,7 @@ export default function NavbarPill() {
                 setActive(index); //ativa o link clicado
                 router.push(link.href); //redireciona para a página correspondente ao link clicado
               }}
-              className={`relative z-10 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
+              className={`relative cursor-pointer z-10 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
             >
               {link.name}
             </button>

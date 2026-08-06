@@ -60,6 +60,15 @@
   }
 }
 
+/* Rolagem horizontal sem barra visível */
+.scrollbar-hide {
+  -ms-overflow-style: none;   /* IE / Edge legado */
+  scrollbar-width: none;      /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;              /* Chrome / Safari / Opera */
+}
+
 .fadeIn {
   animation: fadeIn 0.3s ease-in-out forwards
 }
