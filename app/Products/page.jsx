@@ -31,7 +31,7 @@ import useWindowSize from "./useWindowSize";
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 500);
     return () => clearTimeout(timer);
   }, []);
 

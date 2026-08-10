@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import "./globals.css";
 import NavbarWrapper from '@/components/layout/navbarWrapper';
+import PageTransition from '@/components/PageTransition';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
         className={`${outfit.className} antialiased text-foreground transition-colors duration-300 ease-in-out bg-zinc-50 dark:bg-gray-900`}
       >
         <NavbarWrapper />
-        <div className="relative">{children}</div>
+        <div className="relative">
+          <PageTransition>{children}</PageTransition>
+        </div>
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ export default function Hero() {
                 <h2 className='text-lg sm:text-xl lg:text-2xl text-slate-900'>Lançamento do ano</h2>
                 <h1 className='text-4xl sm:text-5xl lg:text-6xl text-slate-900'>Tênis Air Max</h1>
                 <p className='text-[#D46F1B] text-sm sm:text-base'>Tênis esportivo com amortecimento avançado.</p>
-                <button className='bg-slate-900 w-fit text-white px-4 py-2 rounded-full text-sm sm:text-base'>Ver produto</button>
+                <button className='bg-slate-900 w-fit text-white px-4 py-2 rounded-full text-sm sm:text-base cursor-pointer hover:shadow-md hover:shadow-gray-800 hover:scale-102 transition-all ease-in-out duration-200'>Ver produto</button>
             </div>
             <div className='absolute top-0 right-0 w-full sm:w-3/4 lg:w-200 h-full'>
                 <img

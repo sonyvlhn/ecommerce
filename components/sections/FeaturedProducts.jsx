@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 500);
         return () => clearTimeout(timer);
     }, []);
 
@@ -30,7 +30,7 @@ export default function FeaturedProducts() {
     return (
         <div className='bg-gray-200 rounded-2xl p-1 inset-shadow-sm border border-gray-300 dark:border-gray-700 mb-24 md:mb-8 mx-4 md:mx-4'>
             <div className='p-4 flex justify-between items-center'>
-                <h2 className='text-2xl font-semibold text-gray-500 dark:text-white tracking-tight ml-4'>Produtos em Destaque</h2>
+                <h2 className='text-2xl font-semibold text-gray-500 dark:text-white tracking-tight ml-4 pt-4'>Produtos em Destaque</h2>
                 <Link href='/Products' className='flex items-center gap-2  text-sky-600 cursor-pointer hover:bg-gray-300 hover:rounded-full py-2 px-3 transition-all hover:duration-500'>Ver todos
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
