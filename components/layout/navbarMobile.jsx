@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import UserPanel from "./userPanel";
 
 const links = [
   {
@@ -49,7 +50,7 @@ const links = [
   },
   {
     name: "Usuário",
-    href: "/User",
+    modal: true,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -68,15 +69,21 @@ const links = [
 ];
 
 export default function NavbarMobile() {
-  const [active, setActive] = useState(0);
+  const [routeActive, setRouteActive] = useState(0);
   const refs = useRef([]);
   const [pill, setPill] = useState({ left: 0, width: 0 });
+  const [userOpen, setUserOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
+  // enquanto o painel está aberto a pílula fica no "Usuário";
+  // ao fechar ela volta sozinha para o item da rota atual
+  const userIndex = links.findIndex((l) => l.modal);
+  const active = userOpen ? userIndex : routeActive;
+
   useEffect(() => {
     const idx = links.findIndex((l) => l.href === pathname);
-    if (idx >= 0) setActive(idx);
+    if (idx >= 0) setRouteActive(idx);
   }, [pathname]);
 
   useEffect(() => {
@@ -86,29 +93,36 @@ export default function NavbarMobile() {
   }, [active]);
 
   return (
-    <div className="fixed bottom-0 right-0 left-0 z-50 flex items-center justify-center py-2 backdrop-blur-sm">
-      <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
-        <div className="relative flex gap-1 p-1.5">
-          <div
-            className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out"
-            style={{ left: pill.left, width: pill.width }}
-          ></div>
-          {links.map((link, index) => (
-            <button
-              key={index}
-              ref={(element) => (refs.current[index] = element)}
-              onClick={() => {
-                setActive(index);
-                router.push(link.href);
-              }}
-              className={`relative z-10 flex flex-col items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
-            >
-              {link.icon}
-              {link.name}
-            </button>
-          ))}
-        </div>
-      </nav>
-    </div>
+    <>
+      <UserPanel isOpen={userOpen} onClose={() => setUserOpen(false)} />
+      <div className="fixed bottom-[-2] right-0 left-0 z-50 flex items-center justify-center py-2 backdrop-blur-sm">
+        <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
+          <div className="relative flex gap-1 p-1.5">
+            <div
+              className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out"
+              style={{ left: pill.left, width: pill.width }}
+            ></div>
+            {links.map((link, index) => (
+              <button
+                key={index}
+                ref={(element) => (refs.current[index] = element)}
+                onClick={() => {
+                  if (link.modal) {
+                    setUserOpen(true);
+                    return;
+                  }
+                  setRouteActive(index);
+                  router.push(link.href);
+                }}
+                className={`relative z-10 flex flex-col items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ease-in-out ${active === index ? "text-blue-600 dark:text-sky-300" : "text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"}`}
+              >
+                {link.icon}
+                {link.name}
+              </button>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }

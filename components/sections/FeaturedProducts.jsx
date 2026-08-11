@@ -5,12 +5,25 @@ import { useState, useEffect } from "react";
 import products from '@/data/products.json'
 import Card from '@/components/ui/Card'
 import SkeletonCard from '../ui/skeletonCard';
+import Quickview from '@/components/ui/Quickview';
 import useWindowSize from '@/app/Products/useWindowSize';
 
 export default function FeaturedProducts() {
 
     const { isMobile } = useWindowSize();
     const [loading, setLoading] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+
+    const handleQuickView = (product) => {
+        setSelectedProduct(product);
+        setIsQuickViewOpen(true);
+    };
+
+    const handleCloseQuickView = () => {
+        setIsQuickViewOpen(false);
+        setSelectedProduct(null);
+    };
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
@@ -55,6 +68,13 @@ export default function FeaturedProducts() {
                     </div>
                   ))}
             </div>
+            {isQuickViewOpen && selectedProduct && (
+                <Quickview
+                    product={selectedProduct}
+                    onClose={handleCloseQuickView}
+                    isOpen={isQuickViewOpen}
+                />
+            )}
         </div>
     )
 }

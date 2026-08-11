@@ -2,24 +2,25 @@ import React from 'react'
 
 export default function SkeletonCard() {
   return (
-    <div className="w-full max-w-85 pb-6 border-6 border-white dark:border-gray-900 bg-white dark:bg-gray-900 dark:ring-1 dark:ring-gray-700/70 rounded-4xl my-2 shadow-lg dark:shadow-black/30 hover:scale-101 transition-transform duration-300 ease-in-out grid group">
-      <div className="w-full h-52 object-cover object-bottom overflow-hidden rounded-t-3xl mask-b-from-70% mask-b-to-100% shimmer"></div>
-      <div className="relative z-10 -mt-15 px-6 space-y-3 flex flex-col flex-1 bg-linear-to-t from-white dark:from-gray-900 from-80% to-transparent pt-4">
+    <div className="relative w-full max-w-80 h-full pb-6 border-3 border-white/20 dark:border-gray-800/20 bg-[#f8f8f8] dark:bg-gray-900/60 rounded-3xl sm:rounded-4xl my-2 shadow-lg dark:shadow-black/50 flex flex-col group">
+      <div className="w-full h-40 sm:h-48 lg:h-52 overflow-hidden rounded-t-3xl sm:rounded-t-4xl mask-b-from-70% mask-b-to-100% shimmer"></div>
+      <div className="relative z-10 -mt-14 sm:-mt-20 px-4 sm:px-6 space-y-1 flex flex-col flex-1 min-w-0 pt-4">
         {/* título */}
-        <div className="h-6 shimmer rounded w-3/4"></div>
+        <div className="h-6 sm:h-7 shimmer rounded mt-6 sm:mt-10 w-3/4"></div>
         {/* descrição */}
         <div className="h-4 shimmer rounded w-full"></div>
 
         {/* preço */}
-        <div className='flex justify-between'>
-          <div className="px-4 py-3 shimmer rounded-full bg-black"></div>
-          <div className="h-6 shimmer rounded w-1/2 bg-black"></div>
+        <div className="flex w-full flex-wrap items-center justify-between gap-2 mt-3">
+          <div className="h-7 sm:h-8 w-16 shimmer rounded-full shrink-0"></div>
+          <div className="h-7 sm:h-8 w-24 shimmer rounded"></div>
         </div>
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60">
+
+        <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700/60">
           {/* botões */}
-          <div className="flex w-full items-center gap-2">
-            <div className="rounded-full w-1/2 text-sm bg-gray-200 dark:bg-gray-700 p-5 shimmer"></div>
-            <div className="rounded-full w-1/2 text-sm bg-gray-200 dark:bg-gray-700 p-5 shimmer"></div>
+          <div className="grid grid-cols-2 items-center gap-2">
+            <div className="h-9 sm:h-10 w-full rounded-full shimmer"></div>
+            <div className="h-9 sm:h-10 w-full rounded-full shimmer"></div>
           </div>
         </div>
       </div>

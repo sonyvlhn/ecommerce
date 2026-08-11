@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Card({ product, onQuickView }) {
   return (
-    <div className="relative cursor-pointer w-full max-w-80 h-full pb-6 border-3 border-white/20 dark:border-gray-800/20 bg-[#f8f8f8] dark:bg-gray-900/60 dark:backdrop-blur-md rounded-3xl sm:rounded-4xl my-2 shadow-lg dark:shadow-black/50 transition-transform duration-300 ease-in-out hover:scale-101 flex flex-col group">
+    <div className="relative cursor-pointer w-full max-w-80 h-full pb-6 border-3 border-white/20 dark:border-gray-800/20 bg-[#f8f8f8] dark:bg-gray-900/60 dark:backdrop-blur-md rounded-3xl sm:rounded-4xl my-2 shadow-lg dark:shadow-black/50 transition-transform duration-200 ease-in-out hover:scale-101 flex flex-col group">
       <Image
         loading='eager'
         src={product.image}

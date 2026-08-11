@@ -1,11 +1,11 @@
 "use client"
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 // mesma ordem dos links da navbar — define para que lado a página desliza
-const ROUTE_ORDER = ["/", "/Products", "/about", "/User"];
+const ROUTE_ORDER = ["/", "/Products", "/about"];
 
 const DISTANCE = 32;
 
@@ -51,6 +51,17 @@ export default function PageTransition({ children }) {
     previousIndex.current = currentIndex;
   }
 
+  // fallback quando AnimatePresence initial={false} pula a animação de entrada
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (node.current) {
+        node.current.style.filter = "";
+        node.current.style.transform = "none";
+      }
+    }, TRANSITION.duration * 1000 + 50);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   return (
     // clip (e não hidden) evita criar um contêiner de rolagem aninhado,
     // que quebraria o `sticky` do filtro lateral
@@ -71,7 +82,9 @@ export default function PageTransition({ children }) {
           exit="exit"
           onAnimationComplete={(variant) => {
             if (variant === "animate" && node.current) {
+              // filter e transform criam containing block e quebram position: sticky
               node.current.style.filter = "";
+              node.current.style.transform = "none";
             }
           }}
         >
