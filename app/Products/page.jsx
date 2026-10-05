@@ -4,7 +4,7 @@ import Card from "@/components/ui/Card";
 import SkeletonCard from "@/components/ui/skeletonCard";
 import Quickview from "@/components/ui/Quickview";
 import { useState, useEffect, useMemo } from "react";
-import Filter from "@/components/layout/filter";
+import Filter, { MobileFilter } from "@/components/layout/filter";
 import useWindowSize from "./useWindowSize";
 
 const INITIAL_FILTERS = {
@@ -52,6 +52,14 @@ const categories = [...new Set(products.map((product) => product.category))];
     }
   }, [filters]);
 
+  const filterProps = {
+    categories,
+    filters,
+    onChange: setFilters,
+    onReset: () => setFilters(INITIAL_FILTERS),
+    resultCount: filteredProducts.length,
+  };
+
 
   // Abrindo o QuickView
   const handleQuickView = (product) => {
@@ -77,18 +85,18 @@ const categories = [...new Set(products.map((product) => product.category))];
     <div className="bg-zinc-50 dark:bg-gray-950 transition-colors duration-300 ease-in-out pb-5">
       <div className={isMobile ? `${"pt-6 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 w-full max-w-364 mx-auto transition-colors duration-300 ease-in-out mb-16"}`:`${"pt-22 flex flex-row md:flex-row gap-4 px-2 md:px-4 w-full max-w-364 mx-auto transition-colors duration-300 ease-in-out"}`}>
 
-        <Filter
-          categories={categories}
-          filters={filters}
-          onChange={setFilters}
-          onReset={() => setFilters(INITIAL_FILTERS)}
-          resultCount={filteredProducts.length}
-        />
+        {isMobile === false && <Filter {...filterProps} />}
         <div className="flex-1 min-w-0">
-          {isMobile && <h2 className="text-xl text-black dark:text-white font-semibold p-3 text-center mb-3">Confira nossos produtos</h2>}
+          {isMobile && (
+            <>
+              <h2 className="text-xl text-black dark:text-white font-semibold p-3 text-center mb-1">Confira nossos produtos</h2>
+              <MobileFilter {...filterProps} />
+            </>
+          )}
           <div className="w-full">
-            <section className="w-full md:mb-0 pb-4 mt-3 md:mt-0 bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-950 transition-colors duration-300">
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 justify-items-center p-4 sm:p-6 lg:p-8 gap-6 sm:gap-8 dark:bg-gray-900 rounded-2xl transition-colors duration-300 ease-in-out w-full">
+            <section className="@container w-full md:mb-0 pb-4 mt-3 md:mt-0 bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-950 transition-colors duration-300">
+              {/* Colunas pela largura da área de produtos, não da tela (a barra lateral ocupa espaço no desktop) */}
+              <div className="grid grid-cols-1 @xl:grid-cols-2 @4xl:grid-cols-3 justify-items-center p-4 @xl:p-6 @4xl:p-8 gap-6 @xl:gap-8 dark:bg-gray-900 rounded-2xl transition-colors duration-300 ease-in-out w-full">
                 {loading
                   ? Array(6)
                       .fill(0)
