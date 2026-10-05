@@ -41,16 +41,16 @@ export default function FeaturedProducts() {
         : 'w-full';
 
     return (
-        <div className='bg-gray-200 rounded-2xl p-1 inset-shadow-sm border border-gray-300 dark:border-gray-700 mb-24 md:mb-8 mx-4 md:mx-4'>
+        <div className='bg-gray-200 dark:bg-gray-950 rounded-2xl p-1 inset-shadow-sm border border-gray-300 dark:border-gray-800 mb-24 md:mb-8 mx-4 md:mx-4 transition-colors duration-300 ease-in-out'>
             <div className='p-4 flex justify-between items-center'>
-                <h2 className='text-2xl font-semibold text-gray-500 dark:text-white tracking-tight ml-4 pt-4'>Produtos em Destaque</h2>
-                <Link href='/Products' className='flex items-center gap-2  text-sky-600 cursor-pointer hover:bg-gray-300 hover:rounded-full py-2 px-3 transition-all hover:duration-500'>Ver todos
+                <h2 className='text-2xl font-semibold text-gray-500 dark:text-white tracking-tight ml-4 pt-4 transition-colors duration-300 ease-in-out'>Produtos em Destaque</h2>
+                <Link href='/Products' className='flex items-center gap-2  text-sky-600 dark:text-sky-400 cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-800 hover:rounded-full py-2 px-3 transition-all hover:duration-500'>Ver todos
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                     </svg>
                 </Link>
             </div>
-                <div className={`${listClasses} p-4 gap-4 md:gap-8 md:p-10 lg:p-6 mb-4 dark:bg-gray-800 rounded-2xl transition-colors duration-300 ease-in-out w-full`}>
+                <div className={`${listClasses} p-4 gap-4 md:gap-8 md:p-10 lg:p-6 mb-4 dark:bg-gray-900 rounded-2xl transition-colors duration-300 ease-in-out w-full`}>
                 {loading
                 ? Array(4)
                     .fill(0)

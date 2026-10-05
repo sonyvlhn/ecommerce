@@ -36,12 +36,12 @@ export default function Dropdown({ isOpen, onClose }) {
         <div>
           <div
             ref={dropdownRef}
-            className="fixed top-16 right-2 z-50 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 mt-2 animate-fade-in duration-200 space-y-6"
+            className="fixed top-16 right-2 z-50 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 mt-2 animate-fade-in duration-200 space-y-6"
           >
               <div className="py-2">
                 <a
                   href="#"
-                  className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-md"
+                  className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-md"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ export default function Dropdown({ isOpen, onClose }) {
                 </a>
                 <a
                   href="#"
-                  className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-md"
+                  className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-md"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,13 +79,13 @@ export default function Dropdown({ isOpen, onClose }) {
                   </svg>
                   Favoritos
                 </a>
-                <div className="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-md">
+                <div className="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-md">
                   <p>Alternar Tema</p>
                   <ButtonDark />
                 </div>
               </div>
-              <div className="border-t border-gray-200 dark:border-gray-700">
-                <button className="flex gap-3 items-center justify-center w-full py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-b-md">
+              <div className="border-t border-gray-200 dark:border-gray-800">
+                <button className="flex gap-3 items-center justify-center w-full py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-b-md">
                   <p>Fazer Login</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

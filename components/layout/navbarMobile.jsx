@@ -96,10 +96,10 @@ export default function NavbarMobile() {
     <>
       <UserPanel isOpen={userOpen} onClose={() => setUserOpen(false)} />
       <div className="fixed bottom-[-2] right-0 left-0 z-50 flex items-center justify-center py-2 backdrop-blur-sm">
-        <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-800/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
+        <nav className="h-17 rounded-full bg-gray-200/80 dark:bg-gray-900/80 w-fit flex items-center justify-center inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out">
           <div className="relative flex gap-1 p-1.5">
             <div
-              className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out"
+              className="absolute top-1.5 h-[calc(100%-12px)] rounded-full bg-white dark:bg-gray-950 transition-all duration-300 ease-in-out"
               style={{ left: pill.left, width: pill.width }}
             ></div>
             {links.map((link, index) => (

@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${outfit.className} antialiased text-foreground transition-colors duration-300 ease-in-out bg-zinc-50 dark:bg-gray-900`}
+        className={`${outfit.className} antialiased text-foreground transition-colors duration-300 ease-in-out bg-zinc-50 dark:bg-gray-950`}
       >
         <NavbarWrapper />
         <div className="relative">

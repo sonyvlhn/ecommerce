@@ -53,17 +53,17 @@ export default function UserPanel({ isOpen, onClose }) {
             e.propertyName === "translate" || e.propertyName === "transform";
           if (closing && isSlide && e.target === panelRef.current) onClose();
         }}
-        className={`flex flex-col w-full max-w-xl rounded-t-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-2xl dark:shadow-black/50 transition-transform duration-300 ease-in-out ${
+        className={`flex flex-col w-full max-w-xl rounded-t-2xl overflow-hidden bg-white dark:bg-gray-900 shadow-2xl dark:shadow-black/50 transition-transform duration-300 ease-in-out ${
           visible && !closing ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="w-full h-18 bg-white dark:bg-gray-800 flex items-center justify-between p-4 shadow-md transition-all duration-300 ease-in-out">
+        <div className="w-full h-18 bg-white dark:bg-gray-900 flex items-center justify-between p-4 shadow-md transition-all duration-300 ease-in-out">
           <p className="text-2xl font-bold dark:text-white transition-colors duration-300 ease-in-out">
             Preferências
           </p>
           <button
             onClick={handleClose}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 ease-in-out"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +81,10 @@ export default function UserPanel({ isOpen, onClose }) {
             </svg>
           </button>
         </div>
-        <div className="py-2 pb-30 bg-gray-100 dark:bg-gray-800 overflow-y-auto transition-colors duration-300 ease-in-out">
+        <div className="py-2 pb-30 bg-gray-100 dark:bg-gray-900 overflow-y-auto transition-colors duration-300 ease-in-out">
           <a
             href="#"
-            className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-md"
+            className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 hover:rounded-md"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export default function UserPanel({ isOpen, onClose }) {
           </a>
           <a
             href="#"
-            className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-md"
+            className="flex gap-3 items-center justify-start px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 hover:rounded-md"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
