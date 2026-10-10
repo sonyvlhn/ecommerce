@@ -40,12 +40,12 @@ export default function Quickview( {product, onClose, isOpen} ) {
     onClick={handleBackdropClick}
     onAnimationEnd={() => {if (isClosing) onClose();}}
     className={`fixed inset-0 z-50
-        bg-black/60 dark:bg-black/75 backdrop-blur-sm
+        bg-overlay backdrop-blur-sm
         flex items-center justify-center ${isClosing ? "fadeOut" : "fadeIn"}`}>
         <div className="flex justify-center items-center h-screen w-screen">
         <div
         ref={quickviewRef}
-        className="grid min-h-0 grid-cols-[minmax(0,45%)_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] max-h-[90vh] overflow-hidden bg-white dark:bg-gray-950 w-2/4 rounded-2xl shadow-2xl dark:shadow-black/50 border border-transparent dark:border-gray-800 transition-colors duration-300 ease-in-out">
+        className="grid min-h-0 grid-cols-[minmax(0,45%)_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] max-h-[90vh] overflow-hidden bg-surface-raised w-2/4 rounded-2xl shadow-2xl shadow-shadow border border-line transition-colors duration-300 ease-in-out">
           <div className="relative min-h-0 min-w-0">
             <Image
               src={product.image}
@@ -58,20 +58,20 @@ export default function Quickview( {product, onClose, isOpen} ) {
           </div>
           <div className="flex min-h-0 flex-col justify-between m-auto overflow-y-auto">
             <div className=" flex flex-col h-full w-sm py-4 space-y-2.5 overflow-hidden px-3">
-              <h1 className="font-extrabold text-2xl text-black dark:text-white">{product.name}</h1>
+              <h1 className="font-extrabold text-2xl text-heading">{product.name}</h1>
               <div className="flex items-center justify-between w-full">
-                <h2 className="font-medium text-2xl text-black dark:text-sky-300">R$ {product.price.toFixed(2)}</h2>
-                <span className="rounded-full bg-amber-300 px-2 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900/70 dark:text-amber-200 mr-5">
+                <h2 className="font-medium text-2xl text-price">R$ {product.price.toFixed(2)}</h2>
+                <span className="rounded-full bg-badge px-2 py-0.5 text-[10px] font-bold text-badge-foreground mr-5">
                   {product.category}
                 </span>
               </div>
-              <p className="text-md text-gray-400 dark:text-gray-300 font-thin w-full text-justify ">
+              <p className="text-md text-subtle font-thin w-full text-justify ">
                 {product.descriptionComplete}
               </p>
             </div>
             <button
             onClick={handleClose}
-            className="cursor-pointer w-full rounded-full bg-gray-300 dark:bg-gray-700 mb-6 py-1.5 text-gray-700 dark:text-gray-100 max-w-xs mx-auto hover:scale-105 hover:bg-gray-400 dark:hover:bg-gray-600 hover:text-white duration-300 ease-in-out transition-colors">
+            className="cursor-pointer w-full rounded-full bg-secondary mb-6 py-1.5 text-secondary-foreground max-w-xs mx-auto hover:scale-105 hover:bg-secondary-hover hover:text-secondary-hover-foreground duration-300 ease-in-out transition-colors">
               Fechar
             </button>
           </div>

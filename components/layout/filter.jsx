@@ -9,9 +9,9 @@ const SORT_OPTIONS = [
 ]
 
 const inputClass =
-  'w-full rounded-lg bg-white dark:bg-gray-950 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 ring-1 ring-black/10 dark:ring-white/10 focus:outline-none focus:ring-2 focus:ring-slate-500 transition-colors duration-300 ease-in-out'
+  'w-full rounded-lg bg-surface-raised px-3 py-2 text-sm text-heading placeholder:text-subtle ring-1 ring-edge focus:outline-none focus:ring-2 focus:ring-focus transition-colors duration-300 ease-in-out'
 
-const labelClass = 'text-sm font-medium text-gray-700 dark:text-gray-300'
+const labelClass = 'text-sm font-medium text-body'
 
 // Quantos filtros estão ativos (a busca não conta, ela fica sempre visível)
 const countActiveFilters = (filters) =>
@@ -67,8 +67,8 @@ function FilterFields({ categories, filters, onChange, showSearch = true, chips 
                   onClick={() => toggleCategory(category)}
                   className={`rounded-full px-4 py-2 text-sm font-medium ring-1 transition-colors duration-300 ease-in-out cursor-pointer ${
                     active
-                      ? 'bg-slate-900 text-white ring-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:ring-slate-100'
-                      : 'bg-white text-gray-700 ring-black/10 dark:bg-gray-950 dark:text-gray-300 dark:ring-white/10'
+                      ? 'bg-primary text-primary-foreground ring-primary'
+                      : 'bg-surface-raised text-body ring-edge'
                   }`}
                 >
                   {category}
@@ -78,12 +78,12 @@ function FilterFields({ categories, filters, onChange, showSearch = true, chips 
           </div>
         ) : (
           categories.map((category) => (
-            <label key={category} className='flex items-center gap-2 text-sm text-gray-800 dark:text-gray-200 cursor-pointer'>
+            <label key={category} className='flex items-center gap-2 text-sm text-body cursor-pointer'>
               <input
                 type='checkbox'
                 checked={filters.categories.includes(category)}
                 onChange={() => toggleCategory(category)}
-                className='size-4 rounded accent-slate-800 dark:accent-slate-200 cursor-pointer'
+                className='size-4 rounded accent-primary cursor-pointer'
               />
               {category}
             </label>
@@ -105,7 +105,7 @@ function FilterFields({ categories, filters, onChange, showSearch = true, chips 
             onChange={(e) => update('minPrice', e.target.value)}
             className={inputClass}
           />
-          <span className='text-gray-400'>–</span>
+          <span className='text-subtle'>–</span>
           <input
             type='number'
             inputMode='decimal'
@@ -144,13 +144,13 @@ function FilterFields({ categories, filters, onChange, showSearch = true, chips 
 // Versão desktop: barra lateral fixa
 export default function Filter({ categories = [], filters, onChange, onReset, resultCount }) {
   return (
-    <aside className='flex flex-col sticky top-22 self-start w-60 shrink-0 h-[calc(100vh-11vh)] overflow-y-auto bg-gray-200 dark:bg-gray-900 rounded-xl inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out'>
+    <aside className='flex flex-col sticky top-22 self-start w-60 shrink-0 h-[calc(100vh-11vh)] overflow-y-auto bg-surface-muted rounded-xl inset-shadow-sm ring-1 ring-edge-subtle transition-colors duration-300 ease-in-out'>
       <div className='flex items-center justify-between px-5 pt-5 pb-3'>
-        <h2 className='text-lg text-black dark:text-white font-semibold'>Filtros</h2>
+        <h2 className='text-lg text-heading font-semibold'>Filtros</h2>
         <button
           type='button'
           onClick={onReset}
-          className='text-xs text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors'
+          className='text-xs text-muted hover:text-heading cursor-pointer transition-colors'
         >
           Limpar
         </button>
@@ -160,7 +160,7 @@ export default function Filter({ categories = [], filters, onChange, onReset, re
         <FilterFields categories={categories} filters={filters} onChange={onChange} />
 
         {typeof resultCount === 'number' && (
-          <p className='text-xs text-gray-500 dark:text-gray-400'>{resultLabel(resultCount)}</p>
+          <p className='text-xs text-muted'>{resultLabel(resultCount)}</p>
         )}
       </div>
     </aside>
@@ -197,9 +197,9 @@ export function MobileFilter({ categories = [], filters, onChange, onReset, resu
 
   return (
     <>
-      <div className='sticky top-2 z-30 flex items-center gap-2 rounded-2xl bg-gray-200/80 dark:bg-gray-900/80 backdrop-blur-md p-2 inset-shadow-sm ring-1 ring-black/5 dark:ring-white/10 transition-colors duration-300 ease-in-out'>
+      <div className='sticky top-2 z-30 flex items-center gap-2 rounded-2xl bg-surface-muted/80 backdrop-blur-md p-2 inset-shadow-sm ring-1 ring-edge-subtle transition-colors duration-300 ease-in-out'>
         <div className='relative flex-1 min-w-0'>
-          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400'>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 size-4 text-subtle'>
             <path strokeLinecap='round' strokeLinejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' />
           </svg>
           <input
@@ -215,14 +215,14 @@ export function MobileFilter({ categories = [], filters, onChange, onReset, resu
           type='button'
           onClick={() => setIsOpen(true)}
           aria-haspopup='dialog'
-          className='relative flex shrink-0 items-center gap-1.5 rounded-xl bg-white dark:bg-gray-950 px-4 py-2.5 text-sm font-medium text-gray-900 dark:text-white ring-1 ring-black/10 dark:ring-white/10 cursor-pointer transition-colors duration-300 ease-in-out'
+          className='relative flex shrink-0 items-center gap-1.5 rounded-xl bg-surface-raised px-4 py-2.5 text-sm font-medium text-heading ring-1 ring-edge cursor-pointer transition-colors duration-300 ease-in-out'
         >
           <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' className='size-4'>
             <path strokeLinecap='round' strokeLinejoin='round' d='M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75' />
           </svg>
           Filtros
           {activeCount > 0 && (
-            <span className='absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-blue-600 dark:bg-sky-400 text-[11px] font-semibold text-white dark:text-gray-950'>
+            <span className='absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-accent-foreground'>
               {activeCount}
             </span>
           )}
@@ -234,7 +234,7 @@ export function MobileFilter({ categories = [], filters, onChange, onReset, resu
           onClick={(e) => {
             if (panelRef.current && !panelRef.current.contains(e.target)) handleClose()
           }}
-          className={`fixed inset-0 z-60 flex items-end justify-center bg-black/60 dark:bg-black/75 backdrop-blur-sm ${closing ? 'fadeOut' : 'fadeIn'}`}
+          className={`fixed inset-0 z-60 flex items-end justify-center bg-overlay backdrop-blur-sm ${closing ? 'fadeOut' : 'fadeIn'}`}
         >
           <div
             ref={panelRef}
@@ -248,19 +248,19 @@ export function MobileFilter({ categories = [], filters, onChange, onReset, resu
                 setClosing(false)
               }
             }}
-            className={`flex flex-col w-full max-w-xl max-h-[85vh] rounded-t-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 shadow-2xl dark:shadow-black/50 transition-transform duration-300 ease-in-out ${
+            className={`flex flex-col w-full max-w-xl max-h-[85vh] rounded-t-2xl overflow-hidden bg-surface-subtle shadow-2xl shadow-shadow transition-transform duration-300 ease-in-out ${
               visible && !closing ? 'translate-y-0' : 'translate-y-full'
             }`}
           >
-            <div className='flex items-center justify-between p-4 bg-white dark:bg-gray-900 shadow-md transition-colors duration-300 ease-in-out'>
-              <p className='text-2xl font-bold dark:text-white'>Filtros</p>
+            <div className='flex items-center justify-between p-4 bg-surface shadow-md transition-colors duration-300 ease-in-out'>
+              <p className='text-2xl font-bold text-heading'>Filtros</p>
               <button
                 type='button'
                 onClick={handleClose}
                 aria-label='Fechar filtros'
-                className='p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-300 ease-in-out'
+                className='p-2 rounded-full hover:bg-surface-hover-strong cursor-pointer transition-colors duration-300 ease-in-out'
               >
-                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' className='size-6 dark:text-white'>
+                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' className='size-6 text-heading'>
                   <path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
                 </svg>
               </button>
@@ -270,18 +270,18 @@ export function MobileFilter({ categories = [], filters, onChange, onReset, resu
               <FilterFields categories={categories} filters={filters} onChange={onChange} showSearch={false} chips />
             </div>
 
-            <div className='grid grid-cols-2 gap-3 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-colors duration-300 ease-in-out'>
+            <div className='grid grid-cols-2 gap-3 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-line bg-surface transition-colors duration-300 ease-in-out'>
               <button
                 type='button'
                 onClick={onReset}
-                className='rounded-full px-4 py-3 text-sm font-medium text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-950 ring-1 ring-black/10 dark:ring-white/10 cursor-pointer transition-colors duration-300 ease-in-out'
+                className='rounded-full px-4 py-3 text-sm font-medium text-heading bg-background ring-1 ring-edge cursor-pointer transition-colors duration-300 ease-in-out'
               >
                 Limpar
               </button>
               <button
                 type='button'
                 onClick={handleClose}
-                className='rounded-full px-4 py-3 text-sm font-medium text-white dark:text-slate-900 bg-linear-to-tr from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-200 cursor-pointer transition-colors duration-300 ease-in-out'
+                className='rounded-full px-4 py-3 text-sm font-medium text-primary-foreground bg-linear-to-tr from-primary to-primary-gradient-to cursor-pointer transition-colors duration-300 ease-in-out'
               >
                 {resultCount === 1 ? 'Ver 1 produto' : `Ver ${resultCount} produtos`}
               </button>

@@ -3,23 +3,234 @@
 /* Faz o dark mode responder à classe .dark no html (em vez de prefers-color-scheme) */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Paleta de cores do tema.
+ * Cada token tem um valor para o modo claro (:root) e outro para o escuro (.dark).
+ * Futuramente esses valores virão do Painel Admin (banco de dados) e poderão ser
+ * sobrescritos injetando as mesmas variáveis no <html> / <style>.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --theme-transition: 300ms ease-in-out;
+
+  /* Base */
+  --background: #fafafa;
+  --foreground: #171717;
+
+  /* Superfícies */
+  --surface: #ffffff;              /* painéis, dropdowns, cabeçalhos de drawer */
+  --surface-raised: #ffffff;       /* inputs, indicador da navbar, modal */
+  --surface-muted: #e5e7eb;        /* navbar, sidebar de filtros */
+  --surface-sunken: #e5e7eb;       /* seções rebaixadas (listas de produtos) */
+  --surface-inset: transparent;    /* área interna das listas de produtos */
+  --surface-subtle: #f3f4f6;       /* corpo de drawers */
+  --surface-hover: #f3f4f6;        /* hover de itens sobre surface */
+  --surface-hover-strong: #e5e7eb; /* hover de itens sobre surface-subtle */
+  --surface-sunken-hover: #d1d5db; /* hover de itens sobre surface-sunken */
+  --overlay: rgb(0 0 0 / 0.6);     /* fundo atrás de modais */
+
+  /* Textos */
+  --heading: #000000;
+  --body: #374151;
+  --muted: #6b7280;
+  --subtle: #9ca3af;
+  --icon: #334155;
+
+  /* Bordas e anéis */
+  --line: #e5e7eb;
+  --edge: rgb(0 0 0 / 0.1);
+  --edge-subtle: rgb(0 0 0 / 0.05);
+  --focus: #64748b;
+
+  /* Sombras */
+  --shadow: rgb(0 0 0 / 0.1);
+  --shadow-highlight: rgb(255 255 255 / 0.95);
+  --shadow-highlight-hover: rgb(255 255 255 / 1);
+  --shadow-drop: rgb(0 0 0 / 0.06);
+  --shadow-drop-hover: rgb(0 0 0 / 0.1);
+
+  /* Marca / ações */
+  --primary: #0f172a;
+  --primary-gradient-to: #475569;
+  --primary-foreground: #ffffff;
+  --primary-shadow: #1f2937;
+  --secondary: #d1d5db;
+  --secondary-foreground: #374151;
+  --secondary-hover: #9ca3af;
+  --secondary-hover-foreground: #ffffff;
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --highlight: #d46f1b;
+  --price: #000000;
+  --favorite: #f43f5e;
+
+  /* Navegação */
+  --nav-link: #4b5563;
+  --nav-link-hover: #1f2937;
+  --nav-link-active: #2563eb;
+
+  /* Card de produto */
+  --card: #f8f8f8;
+  --card-border: rgb(255 255 255 / 0.2);
+  --card-button: rgb(255 255 255 / 0.8);
+  --card-button-hover: #f7f7f7;
+  --card-button-border: #ffffff;
+  --glass: rgb(255 255 255 / 0.1);
+  --glass-hover: rgb(255 255 255 / 0.8);
+  --glass-border: rgb(255 255 255 / 0.8);
+
+  /* Badge */
+  --badge: #fcd34d;
+  --badge-foreground: #92400e;
+
+  /* Toggle de tema */
+  --toggle-track: #e5e7eb;
+  --toggle-thumb: #ffffff;
+  --toggle-sun: #eab308;
+  --toggle-moon: #334155;
+
+  /* Skeleton */
   --shimmer-from: #e5e7eb;
   --shimmer-via: #f3f4f6;
   --shimmer-to: #e5e7eb;
 }
 
 .dark {
-  --background: #555050;
+  --background: #030712;
   --foreground: #ededed;
+
+  --surface: #111827;
+  --surface-raised: #030712;
+  --surface-muted: #111827;
+  --surface-sunken: #030712;
+  --surface-inset: #111827;
+  --surface-subtle: #111827;
+  --surface-hover: #1f2937;
+  --surface-hover-strong: #1f2937;
+  --surface-sunken-hover: #1f2937;
+  --overlay: rgb(0 0 0 / 0.75);
+
+  --heading: #ffffff;
+  --body: #d1d5db;
+  --muted: #9ca3af;
+  --subtle: #9ca3af;
+  --icon: #cbd5e1;
+
+  --line: #1f2937;
+  --edge: rgb(255 255 255 / 0.1);
+  --edge-subtle: rgb(255 255 255 / 0.1);
+  --focus: #64748b;
+
+  --shadow: rgb(0 0 0 / 0.5);
+  --shadow-highlight: rgb(255 255 255 / 0.15);
+  --shadow-highlight-hover: rgb(255 255 255 / 0.25);
+  --shadow-drop: rgb(0 0 0 / 0.3);
+  --shadow-drop-hover: rgb(0 0 0 / 0.4);
+
+  --primary: #f1f5f9;
+  --primary-gradient-to: #e2e8f0;
+  --primary-foreground: #0f172a;
+  --primary-shadow: rgb(255 255 255 / 0.1);
+  --secondary: #374151;
+  --secondary-foreground: #f3f4f6;
+  --secondary-hover: #4b5563;
+  --secondary-hover-foreground: #ffffff;
+  --accent: #38bdf8;
+  --accent-foreground: #030712;
+  --highlight: #fb923c;
+  --price: #7dd3fc;
+  --favorite: #fb7185;
+
+  --nav-link: #d1d5db;
+  --nav-link-hover: #ffffff;
+  --nav-link-active: #7dd3fc;
+
+  --card: rgb(3 7 18 / 0.6);
+  --card-border: rgb(31 41 55 / 0.2);
+  --card-button: #111827;
+  --card-button-hover: #1f2937;
+  --card-button-border: #1f2937;
+  --glass: rgb(17 24 39 / 0.6);
+  --glass-hover: rgb(17 24 39 / 0.8);
+  --glass-border: rgb(255 255 255 / 0.2);
+
+  --badge: rgb(120 53 15 / 0.7);
+  --badge-foreground: #fde68a;
+
+  --toggle-track: #334155;
+
   --shimmer-from: #161f31;
   --shimmer-via: #333357;
   --shimmer-to: #161f31;
 }
 
+/* Expõe os tokens como utilitários do Tailwind (bg-surface, text-heading, ring-edge...) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-inset: var(--surface-inset);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-hover-strong: var(--surface-hover-strong);
+  --color-surface-sunken-hover: var(--surface-sunken-hover);
+  --color-overlay: var(--overlay);
+
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-icon: var(--icon);
+
+  --color-line: var(--line);
+  --color-edge: var(--edge);
+  --color-edge-subtle: var(--edge-subtle);
+  --color-focus: var(--focus);
+
+  --color-shadow: var(--shadow);
+
+  --color-primary: var(--primary);
+  --color-primary-gradient-to: var(--primary-gradient-to);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-shadow: var(--primary-shadow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-hover-foreground: var(--secondary-hover-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-price: var(--price);
+  --color-favorite: var(--favorite);
+
+  --color-nav-link: var(--nav-link);
+  --color-nav-link-hover: var(--nav-link-hover);
+  --color-nav-link-active: var(--nav-link-active);
+
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-card-button: var(--card-button);
+  --color-card-button-hover: var(--card-button-hover);
+  --color-card-button-border: var(--card-button-border);
+  --color-glass: var(--glass);
+  --color-glass-hover: var(--glass-hover);
+  --color-glass-border: var(--glass-border);
+
+  --color-badge: var(--badge);
+  --color-badge-foreground: var(--badge-foreground);
+
+  --color-toggle-track: var(--toggle-track);
+  --color-toggle-thumb: var(--toggle-thumb);
+  --color-toggle-sun: var(--toggle-sun);
+  --color-toggle-moon: var(--toggle-moon);
+
+  /* Sombras dos botões do card (brilho interno + sombra externa) */
+  --shadow-card-button: inset 0 1.5px 2px var(--shadow-highlight), 0 2px 8px var(--shadow-drop);
+  --shadow-card-button-hover: inset 0 1.5px 3px var(--shadow-highlight-hover), 0 4px 12px var(--shadow-drop-hover);
+}
 
 @keyframes shimmer {
   0%{

@@ -82,28 +82,28 @@ const categories = [...new Set(products.map((product) => product.category))];
   }, []);
 
   return (
-    <div className="bg-zinc-50 dark:bg-gray-950 transition-colors duration-300 ease-in-out pb-5">
+    <div className="bg-background transition-colors duration-300 ease-in-out pb-5">
       <div className={isMobile ? `${"pt-6 flex flex-col md:flex-row justify-center gap-4 px-2 md:px-4 w-full max-w-364 mx-auto transition-colors duration-300 ease-in-out mb-16"}`:`${"pt-22 flex flex-row md:flex-row gap-4 px-2 md:px-4 w-full max-w-364 mx-auto transition-colors duration-300 ease-in-out"}`}>
 
         {isMobile === false && <Filter {...filterProps} />}
         <div className="flex-1 min-w-0">
           {isMobile && (
             <>
-              <h2 className="text-xl text-black dark:text-white font-semibold p-3 text-center mb-1">Confira nossos produtos</h2>
+              <h2 className="text-xl text-heading font-semibold p-3 text-center mb-1">Confira nossos produtos</h2>
               <MobileFilter {...filterProps} />
             </>
           )}
           <div className="w-full">
-            <section className="@container w-full md:mb-0 pb-4 mt-3 md:mt-0 bg-gray-200 inset-shadow-sm rounded-xl dark:bg-gray-950 transition-colors duration-300">
+            <section className="@container w-full md:mb-0 pb-4 mt-3 md:mt-0 bg-surface-sunken inset-shadow-sm rounded-xl transition-colors duration-300">
               {/* Colunas pela largura da área de produtos, não da tela (a barra lateral ocupa espaço no desktop) */}
-              <div className="grid grid-cols-1 @xl:grid-cols-2 @4xl:grid-cols-3 justify-items-center p-4 @xl:p-6 @4xl:p-8 gap-6 @xl:gap-8 dark:bg-gray-900 rounded-2xl transition-colors duration-300 ease-in-out w-full">
+              <div className="grid grid-cols-1 @xl:grid-cols-2 @4xl:grid-cols-3 justify-items-center p-4 @xl:p-6 @4xl:p-8 gap-6 @xl:gap-8 bg-surface-inset rounded-2xl transition-colors duration-300 ease-in-out w-full">
                 {loading
                   ? Array(6)
                       .fill(0)
                       .map((_, index) => <SkeletonCard key={index} />)
                   : filteredProducts.length === 0
                   ? (
-                      <p className="col-span-full py-12 text-center text-gray-500 dark:text-gray-400">
+                      <p className="col-span-full py-12 text-center text-muted">
                         Nenhum produto encontrado com os filtros selecionados.
                       </p>
                     )

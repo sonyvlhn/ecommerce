@@ -35,28 +35,28 @@ export default function ThemeToggle() {
         onClick={toggleTheme}
         className={`
           relative w-12 h-6 flex items-center rounded-full p-1 transition-colors duration-300 ease-in-out
-          ${darkMode ? 'bg-slate-700' : 'bg-gray-200'}
+          bg-toggle-track
         `}
       >
         {/* A "Bolinha" do Toggle */}
         <div
           className={`
-            bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center
+            bg-toggle-thumb w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center
             ${darkMode ? 'translate-x-6' : 'translate-x-0'}
           `}
         >
           {/* Ícones internos para um toque extra */}
           {darkMode ? (
-            <MoonIcon className="w-3 h-3 text-slate-700" />
+            <MoonIcon className="w-3 h-3 text-toggle-moon" />
           ) : (
-            <SunIcon className="w-3 h-3 text-yellow-500" />
+            <SunIcon className="w-3 h-3 text-toggle-sun" />
           )}
         </div>
         
         {/* Texto ou ícones de fundo (opcional) */}
         <div className="absolute inset-0 flex justify-between items-center px-2 pointer-events-none">
-           <SunIcon className={`w-3 h-3 text-white opacity-40 ${darkMode ? 'block' : 'hidden'}`} />
-           <MoonIcon className={`w-3 h-3 text-white opacity-40 ${darkMode ? 'hidden' : 'block'}`} />
+           <SunIcon className={`w-3 h-3 text-toggle-thumb opacity-40 ${darkMode ? 'block' : 'hidden'}`} />
+           <MoonIcon className={`w-3 h-3 text-toggle-thumb opacity-40 ${darkMode ? 'hidden' : 'block'}`} />
         </div>
       </button>
     </div>
