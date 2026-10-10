@@ -82,6 +82,16 @@
   --badge: #fcd34d;
   --badge-foreground: #92400e;
 
+  /* Select */
+  --select-bg: rgb(255 255 255 / 0.8);
+  --select-bg-hover: rgb(255 255 255 / 0.92);
+  --select-border: rgb(255 255 255 / 0.7);
+  --select-picker-bg: rgba(255, 255, 255, 0.966);
+  --select-option-bg: rgb(255 255 255 / 0.35);
+  --select-option-hover: rgba(226, 226, 226, 0.39);
+  --select-option-checked: color-mix(in oklab, var(--secondary-foreground) 14%, transparent);
+  --select-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+
   /* Toggle de tema */
   --toggle-track: #e5e7eb;
   --toggle-thumb: #ffffff;
@@ -155,6 +165,14 @@
 
   --badge: rgb(120 53 15 / 0.7);
   --badge-foreground: #fde68a;
+
+  --select-bg: rgb(17 24 39 / 0.8);
+  --select-bg-hover: rgb(31 41 55 / 0.88);
+  --select-border: rgb(255 255 255 / 0.12);
+  --select-picker-bg: rgb(17 24 39 / 0.88);
+  --select-option-bg: rgb(255 255 255 / 0.03);
+  --select-option-hover: rgb(255 255 255 / 0.1);
+  --select-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
 
   --toggle-track: #334155;
 
@@ -230,6 +248,171 @@
   /* Sombras dos botões do card (brilho interno + sombra externa) */
   --shadow-card-button: inset 0 1.5px 2px var(--shadow-highlight), 0 2px 8px var(--shadow-drop);
   --shadow-card-button-hover: inset 0 1.5px 3px var(--shadow-highlight-hover), 0 4px 12px var(--shadow-drop-hover);
+}
+
+/*
+ * Select — estilo liquid glass aplicado a todos os <select> do projeto.
+ * Em navegadores com "customizable select" (appearance: base-select) a lista de
+ * opções também é estilizada; nos demais, o campo fechado mantém o visual e a
+ * lista usa o popup nativo com as cores do tema.
+ * Fica em @layer base para que utilitários do Tailwind ainda possam sobrescrever.
+ */
+@layer base {
+  select {
+    appearance: none;
+    width: 100%;
+    padding: 0.5rem 2.5rem 0.5rem 0.875rem;
+    border: 1px solid var(--select-border);
+    border-radius: 0.875rem;
+    background-color: var(--select-bg);
+    background-image: var(--select-icon);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    box-shadow: inset 0 1px 1px var(--shadow-highlight), 0 2px 8px var(--shadow-drop);
+    color: var(--heading);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+    transition:
+      background-color var(--theme-transition),
+      border-color var(--theme-transition),
+      box-shadow var(--theme-transition);
+  }
+
+  select:hover {
+    background-color: var(--select-bg-hover);
+    box-shadow: inset 0 1px 2px var(--shadow-highlight-hover), 0 4px 12px var(--shadow-drop-hover);
+  }
+
+  select:focus-visible {
+    outline: none;
+    box-shadow:
+      inset 0 1px 1px var(--shadow-highlight),
+      0 2px 8px var(--shadow-drop),
+      0 0 0 2px var(--focus);
+  }
+
+  select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Fallback: popup nativo com as cores do tema */
+  @supports not (appearance: base-select) {
+    select option {
+      background-color: var(--surface);
+      color: var(--body);
+    }
+  }
+
+  /* Customizable select: campo + lista de opções totalmente estilizáveis */
+  @supports (appearance: base-select) {
+    select,
+    select::picker(select) {
+      appearance: base-select;
+    }
+
+    select {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-inline-end: 0.75rem;
+      background-image: none;
+    }
+
+    select::picker-icon {
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      background: var(--select-icon) center / contain no-repeat;
+      transition: rotate var(--theme-transition);
+    }
+
+    select:open::picker-icon {
+      rotate: 180deg;
+    }
+
+    select::picker(select) {
+      margin-block: 0.5rem;
+      padding: 0.375rem;
+      border: 1px solid var(--select-border);
+      border-radius: 1rem;
+      background-color: var(--select-picker-bg);
+      backdrop-filter: var(--select-picker-blur);
+      -webkit-backdrop-filter: var(--select-picker-blur);
+      box-shadow: inset 0 1px 1px var(--shadow-highlight), 0 12px 32px var(--shadow-drop-hover);
+      opacity: 0;
+      translate: 0 -4px;
+      transition:
+        opacity 200ms ease-out,
+        translate 200ms ease-out,
+        overlay 200ms allow-discrete,
+        display 200ms allow-discrete;
+    }
+
+    select:open::picker(select) {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    @starting-style {
+      select:open::picker(select) {
+        opacity: 0;
+        translate: 0 -4px;
+      }
+    }
+
+    select option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.625rem;
+      color: var(--body);
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background-color: var(--select-option-bg);
+      backdrop-filter: blur(8px) saturate(160%);
+      -webkit-backdrop-filter: blur(8px) saturate(160%);
+      transition:
+        background-color 150ms ease-in-out,
+        border-color 150ms ease-in-out,
+        box-shadow 150ms ease-in-out,
+        color 150ms ease-in-out;
+    }
+
+    select option + option {
+      margin-top: 2px;
+    }
+
+    select option:hover,
+    select option:focus-visible {
+      outline: none;
+      background-color: var(--select-option-hover);
+      border-color: var(--select-border);
+      box-shadow: inset 0 1px 1px var(--shadow-highlight), 0 2px 6px var(--shadow-drop);
+      color: var(--heading);
+    }
+
+    select option:checked {
+      background-color: var(--select-option-checked);
+      border-color: var(--select-border);
+      box-shadow: inset 0 1px 1px var(--shadow-highlight), 0 2px 6px var(--shadow-drop);
+      color: var(--heading);
+      font-weight: 500;
+    }
+
+    select option::checkmark {
+      order: 1;
+      margin-inline-start: auto;
+      color: var(--accent);
+    }
+  }
 }
 
 @keyframes shimmer {

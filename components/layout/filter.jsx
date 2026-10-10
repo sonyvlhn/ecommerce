@@ -128,7 +128,7 @@ function FilterFields({ categories, filters, onChange, showSearch = true, chips 
           id={`${id}-sort`}
           value={filters.sort}
           onChange={(e) => update('sort', e.target.value)}
-          className={`${inputClass} cursor-pointer`}
+          className='w-full'
         >
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
