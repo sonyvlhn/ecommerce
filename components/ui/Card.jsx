@@ -27,11 +27,22 @@ export default function Card({ product, onQuickView }) {
         <p className="font-extralight text-muted text-xs sm:text-sm line-clamp-2 transition-colors duration-300 ease-in-out">
           {product.description}
         </p>
-        <div className="flex w-full flex-wrap items-center justify-between gap-2 mt-3">
-          <div className="bg-linear-to-tr from-0% to-100% from-primary to-primary-gradient-to text-primary-foreground dark:inset-shadow-xs rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs shrink-0 transition-colors duration-300 ease-in-out">-20%</div>
-          <h3 className="text-heading text-lg sm:text-xl whitespace-nowrap transition-colors duration-300 ease-in-out">
-            R$ {product.price.toFixed(2)}
-          </h3>
+        <div className="flex w-full flex-wrap items-end justify-between gap-2 mt-3">
+          {product.hasDiscount && (
+            <div className="bg-linear-to-tr from-0% to-100% from-primary to-primary-gradient-to text-primary-foreground dark:inset-shadow-xs rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs shrink-0 transition-colors duration-300 ease-in-out">
+              -{product.discountPercent.toLocaleString("pt-BR")}%
+            </div>
+          )}
+          <div className="ml-auto flex flex-col items-end leading-tight">
+            {product.hasDiscount && (
+              <span className="text-muted text-xs sm:text-sm line-through whitespace-nowrap transition-colors duration-300 ease-in-out">
+                R$ {product.price.toFixed(2)}
+              </span>
+            )}
+            <h3 className="text-heading text-lg sm:text-xl whitespace-nowrap transition-colors duration-300 ease-in-out">
+              R$ {product.finalPrice.toFixed(2)}
+            </h3>
+          </div>
         </div>
         <div className="mt-auto pt-4 border-t border-line transition-colors duration-300 ease-in-out">
           <div className="grid grid-cols-2 items-center gap-2">

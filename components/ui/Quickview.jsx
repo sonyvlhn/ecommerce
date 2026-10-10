@@ -60,7 +60,15 @@ export default function Quickview( {product, onClose, isOpen} ) {
             <div className=" flex flex-col h-full w-sm py-4 space-y-2.5 overflow-hidden px-3">
               <h1 className="font-extrabold text-2xl text-heading">{product.name}</h1>
               <div className="flex items-center justify-between w-full">
-                <h2 className="font-medium text-2xl text-price">R$ {product.price.toFixed(2)}</h2>
+                <div className="flex flex-col leading-tight">
+                  {product.hasDiscount && (
+                    <span className="text-sm">
+                      <span className="text-muted line-through">R$ {product.price.toFixed(2)}</span>
+                      <span className="ml-2 font-semibold text-accent">-{product.discountPercent.toLocaleString("pt-BR")}%</span>
+                    </span>
+                  )}
+                  <h2 className="font-medium text-2xl text-price">R$ {product.finalPrice.toFixed(2)}</h2>
+                </div>
                 <span className="rounded-full bg-badge px-2 py-0.5 text-[10px] font-bold text-badge-foreground mr-5">
                   {product.category}
                 </span>

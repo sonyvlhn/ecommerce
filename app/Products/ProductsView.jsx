@@ -38,15 +38,15 @@ export default function ProductsView({ products = [], loading = false }) {
           product.name.toLowerCase().includes(search) ||
           product.description.toLowerCase().includes(search)) &&
         (filters.categories.length === 0 || filters.categories.includes(product.category)) &&
-        product.price >= min &&
-        product.price <= max
+        product.finalPrice >= min &&
+        product.finalPrice <= max
     );
 
     switch (filters.sort) {
       case "price-asc":
-        return [...result].sort((a, b) => a.price - b.price);
+        return [...result].sort((a, b) => a.finalPrice - b.finalPrice);
       case "price-desc":
-        return [...result].sort((a, b) => b.price - a.price);
+        return [...result].sort((a, b) => b.finalPrice - a.finalPrice);
       case "name-asc":
         return [...result].sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
       default:
