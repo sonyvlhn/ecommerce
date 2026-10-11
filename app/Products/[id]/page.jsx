@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductById } from "@/lib/products";
+import ProductCarousel from "@/components/ui/ProductCarousel";
 
 // Dados vêm do banco a cada requisição (cadastro feito pelo Painel Admin)
 export const dynamic = "force-dynamic";
@@ -54,22 +54,13 @@ export default async function ProductPage({ params }) {
         </nav>
 
         <section className="grid gap-4 md:grid-cols-2 bg-surface-sunken rounded-3xl p-3 md:p-4 inset-shadow-sm border border-line transition-colors duration-300 ease-in-out">
-          <div className="relative aspect-square overflow-hidden rounded-2xl border-3 border-card-border bg-card shadow-lg shadow-shadow">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-center dark:brightness-[0.92]"
-            />
+          <ProductCarousel images={product.images} alt={product.name}>
             {product.hasDiscount && (
-              <span className="absolute left-4 top-4 rounded-full bg-linear-to-tr from-primary to-primary-gradient-to px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-md">
+              <span className="absolute left-4 top-4 z-10 rounded-full bg-linear-to-tr from-primary to-primary-gradient-to px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-md">
                 -{percent}%
               </span>
             )}
-          </div>
+          </ProductCarousel>
 
           <div className="flex flex-col gap-6 rounded-2xl bg-surface-inset p-4 md:p-8 transition-colors duration-300 ease-in-out">
             <div className="space-y-3">
