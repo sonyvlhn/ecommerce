@@ -55,7 +55,7 @@ export default function FeaturedProductsList({ products = [], loading = false })
                 : products.length === 0
                 ? (
                     <p className='col-span-full w-full py-12 text-center text-muted'>
-                      Nenhum produto cadastrado no momento.
+                      Nenhum produto em destaque no momento.
                     </p>
                   )
                 : products.map((product) => (
